@@ -2,8 +2,8 @@ import random
 
 from fastapi import APIRouter, Depends, HTTPException
 
-from api.deps import get_db
-from api.schemas import Quote
+from quotes.api.deps import get_db
+from quotes.api.schemas import Quote
 
 router = APIRouter(
     responses={404: {"detail": "Not found"}},

@@ -3,7 +3,8 @@ name = "backend"
 version = "0.1.0"
 description = ""
 authors = ["Morten Lied Johansen <mortenjo@ifi.uio.no>"]
-readme = "README.md"
+readme = "README.rst"
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -14,6 +15,14 @@ pydantic-settings = "^2.1.0"
 fiaas-logging = "^0.1.1"
 
 
+[tool.poetry.group.dev.dependencies]
+black = "^23"
+prospector = "^1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ["py311"]

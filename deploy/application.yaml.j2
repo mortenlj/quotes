@@ -1,0 +1,19 @@
+---
+apiVersion: suffiks.com/v1
+kind: Application
+metadata:
+  name: quotes
+  namespace: default
+  labels:
+    app: quotes
+spec:
+  image: "{{ environ('IMAGE') }}:{{ environ('VERSION') }}"
+  port: 3000
+  envFrom:
+    - configmap: quotes-config
+  ingress:
+    routes:
+      - host: quotes.ibidem.no
+        path: /
+        port: 3000
+        type: http

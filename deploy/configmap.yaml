@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "quotes-config"
+  namespace: default
+  labels:
+    app: quotes
+data:
+  bind_address: "0.0.0.0"
+  mode: "Release"
+  root_path: "/"
