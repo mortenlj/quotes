@@ -3,7 +3,6 @@ name = "backend"
 version = "0.1.0"
 description = ""
 authors = ["Morten Lied Johansen <mortenjo@ifi.uio.no>"]
-readme = "README.rst"
 license = "MIT"
 
 [tool.poetry.dependencies]
