@@ -123,3 +123,4 @@ venv.bak/
 .VolumeIcon.icns
 .webassets-cache
 wheels/
+elm-stuff
