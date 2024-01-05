@@ -416,6 +416,10 @@ QUOTES = (
     Quote(id=266, quote="It is easier to port a shell than a shell script."),
     Quote(id=267, quote="The only intuitive interface is the nipple. After that, it's all learned."),
     Quote(id=268, quote="The only thing worse than a computer you can't control is a computer you can."),
+    Quote(
+        id=269,
+        quote="It is difficult to get a man to understand something when his salary depends upon his not understanding it.",
+    ),
 )
 
 
