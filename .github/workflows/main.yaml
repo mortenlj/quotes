@@ -49,9 +49,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: "Pull latest image so it exists locally and can be used by cache :crossed_fingers:"
-        continue-on-error: true
-        run: docker pull "${main_image}:latest"
       - name: Install earthly
         uses: earthly/actions-setup@v1
         with:
