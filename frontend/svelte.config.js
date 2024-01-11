@@ -1,5 +1,5 @@
 import adapter from '@sveltejs/adapter-static';
-import {vitePreprocess} from '@sveltejs/vite-plugin-svelte';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -11,7 +11,7 @@ const config = {
 		adapter: adapter(),
 
 		prerender: {
-			handleHttpError: ({path, referrer, message}) => {
+			handleHttpError: ({ path, referrer, message }) => {
 				// ignore links to /docs, which are handled by the backend
 				if (path === '/docs') {
 					return;

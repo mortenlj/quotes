@@ -5,7 +5,7 @@
 <main class="text-center text-lg-start bg-body">
 	<div class="container py-4">
 		<h1 class="mb-3">Quotes</h1>
-		<slot/>
+		<slot />
 	</div>
 </main>
 
