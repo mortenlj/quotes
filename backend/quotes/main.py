@@ -18,7 +18,7 @@ class ExitOnSignal(Exception):
     pass
 
 
-app = FastAPI(title=TITLE)
+app = FastAPI(title=TITLE, redoc_url=None)
 app.include_router(api.router, prefix="/api")
 app.include_router(probes.router, prefix="/_")
 app.mount("", StaticFiles(directory="build", html=True))
