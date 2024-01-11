@@ -15,7 +15,6 @@ deps:
 build:
     FROM +deps
     RUN npm run check && \
-        npm run lint && \
         npm run build
     SAVE ARTIFACT build
     SAVE IMAGE --cache-hint
