@@ -8,8 +8,12 @@ deps:
     COPY tsconfig.json svelte.config.js vite.config.ts ./
     COPY src src
     COPY static static
+    SAVE IMAGE --cache-hint
 
 build:
     FROM +deps
-    RUN npm run build
-    SAVE ARTIFACT build /build AS LOCAL build
+    RUN npm run check && \
+        npm run lint && \
+        npm run build
+    SAVE ARTIFACT build
+    SAVE IMAGE --cache-hint
