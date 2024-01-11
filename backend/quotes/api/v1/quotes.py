@@ -12,7 +12,7 @@ router = APIRouter(
 )
 
 
-@router.get("/")
+@router.get("/", status_code=status.HTTP_303_SEE_OTHER)
 def get_random_quote(db: dict = Depends(get_db)):
     """Get random quote"""
     quote_id = random.choice(list(db.keys()))
