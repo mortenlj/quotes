@@ -50,6 +50,7 @@ docker:
 
     COPY --dir +deps/.venv .
     COPY --dir +build/quotes .
+    COPY --dir ../frontend/+build/build build
 
     ENV PATH="/bin:/usr/bin:/usr/local/bin:/app/.venv/bin"
 
