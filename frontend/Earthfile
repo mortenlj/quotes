@@ -2,6 +2,8 @@ VERSION 0.7
 
 FROM node:latest
 
+WORKDIR /app
+
 deps:
     COPY package.json package-lock.json ./
     RUN npm install
