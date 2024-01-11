@@ -64,7 +64,7 @@ jobs:
           EARTHLY_OUTPUT: true
         run: |
           earthly --version
-          earthly "--remote-cache=${cache_image}" +deploy "--main_image=${main_image}" "--VERSION=${VERSION}"
+          earthly +deploy "--main_image=${main_image}" "--VERSION=${VERSION}"
       - name: Save manifests for later deploy
         uses: actions/upload-artifact@v4
         with:

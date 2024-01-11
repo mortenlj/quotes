@@ -16,7 +16,6 @@ deps:
     RUN poetry install --only main --no-root --no-interaction
 
     SAVE ARTIFACT .venv
-    SAVE IMAGE --cache-hint
 
 
 build:
@@ -30,7 +29,6 @@ build:
         poetry run prospector
 
     SAVE ARTIFACT quotes
-    SAVE IMAGE --cache-hint
 
 test:
     LOCALLY
