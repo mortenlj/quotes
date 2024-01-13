@@ -20,7 +20,7 @@ docker:
 
     COPY --dir ./backend/+deps/.venv .
     COPY --dir ./backend/+build/quotes .
-    COPY --dir --platform=linux/amd64 ./frontend/+build/build .
+    COPY --keep-ts --dir --platform=linux/amd64 ./frontend/+build/build .
 
     ENV PATH="/bin:/usr/bin:/usr/local/bin:/app/.venv/bin"
 
