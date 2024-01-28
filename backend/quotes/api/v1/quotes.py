@@ -25,8 +25,12 @@ def get_random_quote(db: dict = Depends(get_db)):
     "/{id}",
     response_model=Quote,
 )
-def get_quote(id: int, accept: Annotated[str | None, Header()] = "application/json",
-              user_agent: Annotated[str | None, Header()] = None, db: dict = Depends(get_db)):
+def get_quote(
+    id: int,
+    accept: Annotated[str | None, Header()] = "application/json",
+    user_agent: Annotated[str | None, Header()] = None,
+    db: dict = Depends(get_db),
+):
     quote = db.get(id)
     if quote is None:
         raise HTTPException(status_code=404, detail="Quote not found")
