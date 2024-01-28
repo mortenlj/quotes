@@ -10,3 +10,9 @@ class Quote(BaseModel):
     id: int
     quote: str
     dedication: Optional[str] = None
+
+    def encode(self, charset):
+        parts = [self.quote]
+        if self.dedication:
+            parts.extend(("---", self.dedication))
+        return " ".join(parts).encode(charset)

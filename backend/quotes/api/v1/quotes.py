@@ -1,7 +1,8 @@
 import random
+from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException
-from fastapi.responses import RedirectResponse
+from fastapi import APIRouter, Depends, HTTPException, Header
+from fastapi.responses import RedirectResponse, PlainTextResponse
 from starlette import status
 
 from quotes.api.deps import get_db
@@ -24,8 +25,11 @@ def get_random_quote(db: dict = Depends(get_db)):
     "/{id}",
     response_model=Quote,
 )
-def get_quote(id: int, db: dict = Depends(get_db)):
+def get_quote(id: int, accept: Annotated[str | None, Header()] = "application/json",
+              user_agent: Annotated[str | None, Header()] = None, db: dict = Depends(get_db)):
     quote = db.get(id)
     if quote is None:
         raise HTTPException(status_code=404, detail="Quote not found")
+    if accept == "text/plain" or user_agent.startswith("xscreensaver-text"):
+        return PlainTextResponse(quote)
     return quote
