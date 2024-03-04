@@ -64,6 +64,9 @@ jobs:
           EARTHLY_VERBOSE: true
           EARTHLY_FULL_TARGET: true
           EARTHLY_OUTPUT: true
+          EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
           earthly --version
           earthly -org mortenjo --sat ibidem "--remote-cache=${cache_image}" +deploy "--main_image=${main_image}" "--VERSION=${VERSION}"
