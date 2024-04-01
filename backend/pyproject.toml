@@ -9,7 +9,7 @@ packages = [{include = "quotes"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "^0.110.0"
-uvicorn = "^0.27.1"
+uvicorn = "^0.29.0"
 pydantic = "^2.6.3"
 pydantic-settings = "^2.2.1"
 fiaas-logging = "^0.1.1"
