@@ -10,7 +10,7 @@ packages = [{include = "quotes"}]
 python = "^3.11"
 fastapi = "^0.112.2"
 uvicorn = "^0.30.6"
-pydantic = "^2.8.2"
+pydantic = "^2.9.0"
 pydantic-settings = "^2.4.0"
 fiaas-logging = "^0.1.1"
 
