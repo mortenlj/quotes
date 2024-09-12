@@ -8,7 +8,7 @@ packages = [{include = "quotes"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.114.0"
+fastapi = "^0.114.1"
 uvicorn = "^0.30.6"
 pydantic = "^2.9.1"
 pydantic-settings = "^2.5.0"
