@@ -119,13 +119,11 @@ jobs:
           api_accesstoken: ${{ secrets.ZEROTIER_API_ACCESSTOKEN }}
   cleanup:
     name: Cleanup
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: build
     permissions:
       packages: write
-    concurrency:
-      group: cleanup
-      cancel-in-progress: true
     strategy:
       matrix:
         package:
