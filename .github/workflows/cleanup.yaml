@@ -30,6 +30,7 @@ jobs:
         with:
           dry-run: true
           token: ${{ secrets.GITHUB_TOKEN }}
+          package: ${{ matrix.package.name }}
           keep-n-tagged: ${{ matrix.package.keep }}
           older-than: ${{ matrix.package.older-than }}
           delete-ghost-images: true
