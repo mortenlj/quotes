@@ -1,0 +1,37 @@
+name: Cleanup
+
+concurrency:
+  group: cleanup
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '24 10 * * 3'
+
+jobs:
+  cleanup:
+    name: Cleanup
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    strategy:
+      matrix:
+        package:
+          - name: ${{ github.repository }}/cache
+            keep: 1
+            older-than: ""
+          - name: ${{ github.repository }}
+            keep: 5
+            older-than: 2 weeks
+    steps:
+      - name: Cleanup ${{ matrix.package.name }} images
+        uses: dataaxiom/ghcr-cleanup-action@v1.0.13
+        with:
+          dry-run: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          keep-n-tagged: ${{ matrix.package.keep }}
+          older-than: ${{ matrix.package.older-than }}
+          delete-ghost-images: true
+          delete-orphaned-images: true
+          delete-partial-images: true
