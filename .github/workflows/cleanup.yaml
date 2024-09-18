@@ -18,10 +18,10 @@ jobs:
     strategy:
       matrix:
         package:
-          - name: ${{ github.repository }}/cache
+          - name: quotes/cache
             keep: 1
             older-than: ""
-          - name: ${{ github.repository }}
+          - name: quotes
             keep: 5
             older-than: 2 weeks
     steps:
