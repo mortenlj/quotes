@@ -124,24 +124,25 @@ jobs:
     needs: build
     permissions:
       packages: write
-    strategy:
-      matrix:
-        package:
-          - name: quotes/cache
-            keep: 1
-            older-than: ""
-          - name: quotes
-            keep: 5
-            older-than: 2 weeks
     steps:
-      - name: Cleanup ${{ matrix.package.name }} images
+      - name: Cleanup main images
         uses: dataaxiom/ghcr-cleanup-action@v1.0.13
         with:
           dry-run: true
           token: ${{ secrets.GITHUB_TOKEN }}
-          package: ${{ matrix.package.name }}
-          keep-n-tagged: ${{ matrix.package.keep }}
-          older-than: ${{ matrix.package.older-than }}
+          keep-n-tagged: 5
+          older-than: 2 weeks
           delete-ghost-images: true
           delete-orphaned-images: true
           delete-partial-images: true
+      - name: Cleanup old cache images
+        uses: dataaxiom/ghcr-cleanup-action@v1.0.13
+        with:
+          dry-run: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          package: quotes/cache
+          exclude-tags: cache
+          keep-n-tagged: 1
+          delete-ghost-images: true
+          delete-orphaned-images: true
+          delete-partial-images: false
