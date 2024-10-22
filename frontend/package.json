@@ -18,7 +18,7 @@
 		"@popperjs/core": "2.11.8",
 		"@sveltejs/adapter-auto": "3.1.0",
 		"@sveltejs/kit": "2.0.7",
-		"@sveltejs/vite-plugin-svelte": "3.0.1",
+		"@sveltejs/vite-plugin-svelte": "3.1.2",
 		"@types/eslint": "8.56.12",
 		"@typescript-eslint/eslint-plugin": "6.18.0",
 		"@typescript-eslint/parser": "6.18.0",
