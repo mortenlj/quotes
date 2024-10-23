@@ -30,7 +30,7 @@
 		"prettier-plugin-svelte": "3.2.7",
 		"sass": "1.80.3",
 		"svelte": "4.2.19",
-		"svelte-check": "3.6.2",
+		"svelte-check": "3.8.6",
 		"tslib": "2.6.2",
 		"typescript": "5.3.3",
 		"vite": "5.0.11"
