@@ -1,5 +1,5 @@
 ---
-apiVersion: suffiks.com/v1
+apiVersion: yakup.ibidem.no/v1
 kind: Application
 metadata:
   name: quotes
@@ -8,12 +8,21 @@ metadata:
     app: quotes
 spec:
   image: "{{ environ('IMAGE') }}:{{ environ('VERSION') }}"
-  port: 3000
+  ports:
+    http:
+      port: 3000
+      ingress:
+        - zone: public
+  probes:
+    liveness:
+      http:
+        initialDelaySeconds: 100
+        portName: http
+        path: /_/healthy
+    readiness:
+      http:
+        initialDelaySeconds: 100
+        portName: http
+        path: /_/ready
   envFrom:
     - configmap: quotes-config
-  ingress:
-    routes:
-      - host: quotes.ibidem.no
-        path: /
-        port: 3000
-        type: http
