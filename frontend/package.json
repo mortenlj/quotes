@@ -14,7 +14,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@playwright/test": "1.48.1",
+		"@playwright/test": "1.50.1",
 		"@popperjs/core": "2.11.8",
 		"@sveltejs/adapter-auto": "3.3.1",
 		"@sveltejs/kit": "2.7.2",
