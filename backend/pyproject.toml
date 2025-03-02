@@ -16,7 +16,7 @@ fiaas-logging = "^0.1.1"
 
 
 [tool.poetry.group.dev.dependencies]
-black = "24.10.0"
+black = "25.1.0"
 prospector = "1.15.2"
 
 [build-system]
