@@ -1,28 +1,26 @@
-[tool.poetry]
+[project]
+authors = [
+    { name = "Morten Lied Johansen", email = "mortenjo@ifi.uio.no" },
+]
+license = { text = "MIT" }
+requires-python = "~=3.11"
+dependencies = [
+    "fastapi<1.0.0,>=0.115.2",
+    "uvicorn<1.0.0,>=0.34.0",
+    "pydantic<3.0.0,>=2.9.2",
+    "pydantic-settings<3.0.0,>=2.6.0",
+    "fiaas-logging<1.0.0,>=0.1.1",
+]
 name = "quotes-backend"
 version = "0.1.0"
 description = ""
-authors = ["Morten Lied Johansen <mortenjo@ifi.uio.no>"]
-license = "MIT"
-packages = [{include = "quotes"}]
-
-[tool.poetry.dependencies]
-python = "^3.11"
-fastapi = "^0.115.2"
-uvicorn = "^0.34.0"
-pydantic = "^2.9.2"
-pydantic-settings = "^2.6.0"
-fiaas-logging = "^0.1.1"
-
-
-[tool.poetry.group.dev.dependencies]
-black = "25.1.0"
-prospector = "1.15.2"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 120
-target-version = ["py311"]
+target-version = ["py313"]
+
+[dependency-groups]
+dev = [
+    "black==25.1.0",
+    "prospector==1.15.2",
+]
