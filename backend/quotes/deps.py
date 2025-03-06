@@ -1,3 +1,5 @@
+from fastapi.templating import Jinja2Templates
+
 from quotes.api.schemas import Quote
 
 QUOTES = (
@@ -103,13 +105,15 @@ QUOTES = (
     Quote(id=100, quote="If anything can go wrong, it will.", dedication="Murphys Law §1"),
     Quote(
         id=101,
-        quote="If there is a possibility of several things going wrong, the one that will cause the most damage will be the first one to go wrong.",
+        quote="If there is a possibility of several things going wrong, "
+        "the one that will cause the most damage will be the first one to go wrong.",
         dedication="Murphys Law §2",
     ),
     Quote(id=102, quote="If anything just cannot go wrong, it will anyway.  --  Murphys Law §3"),
     Quote(
         id=103,
-        quote="If you perceive that there are four possible ways in which something can go wrong, and circumvent these, then a fifth way, unprepared for, will promptly develop.",
+        quote="If you perceive that there are four possible ways in which something can go wrong, "
+        "and circumvent these, then a fifth way, unprepared for, will promptly develop.",
         dedication="Murphys Law §4",
     ),
     Quote(id=104, quote="Left to themselves, things tend to go from bad to worse.", dedication="Murphys Law §5"),
@@ -139,7 +143,8 @@ QUOTES = (
     ),
     Quote(
         id=117,
-        quote="When a compiler accepts a program without error on the first run, the program will not yield the desired output.",
+        quote="When a compiler accepts a program without error on the first run, "
+        "the program will not yield the desired output.",
     ),
     Quote(
         id=118,
@@ -148,7 +153,8 @@ QUOTES = (
     ),
     Quote(
         id=119,
-        quote="If builders built buildings the way programmers wrote programs, then the first woodpecker that came along would destroy civilization.",
+        quote="If builders built buildings the way programmers wrote programs, "
+        "then the first woodpecker that came along would destroy civilization.",
         dedication="Weinberg's Second Law",
     ),
     Quote(id=120, quote="It Won't Work.", dedication="Jenkinson's Law"),
@@ -161,7 +167,9 @@ QUOTES = (
     ),
     Quote(
         id=124,
-        quote="Any inanimate object, regardless of its position, configuration or purpose, may be expected to perform at any time in a totally unexpected manner for reasons that are either entirely obscure or else completely mysterious.",
+        quote="Any inanimate object, regardless of its position, configuration or purpose, may be expected to perform "
+        "at any time in a totally unexpected manner for reasons that are either entirely obscure or else"
+        " completely mysterious.",
         dedication="Flap's Law",
     ),
     Quote(id=125, quote="ATTENTION, all abducting aliens!  you DON'T need to RETURN them!"),
@@ -177,7 +185,8 @@ QUOTES = (
     ),
     Quote(
         id=128,
-        quote="To assert that the earth revolves around the sun is as erroneous as to claim that Jesus was not born of a virgin.",
+        quote="To assert that the earth revolves around the sun is "
+        "as erroneous as to claim that Jesus was not born of a virgin.",
         dedication="Cardinal Bellarmino 1615, during the trial of Galileo",
     ),
     Quote(
@@ -213,7 +222,8 @@ QUOTES = (
     ),
     Quote(
         id=137,
-        quote="This 'telephone' has too many shortcomings to be seriously considered as a means of communication. The device is inherently of no value to us.",
+        quote="This 'telephone' has too many shortcomings to be seriously considered as a means of communication. "
+        "The device is inherently of no value to us.",
         dedication="Western Union internal memo, 1876.",
     ),
     Quote(id=138, quote="Who the hell wants to hear actors talk?", dedication="H.M. Warner, Warner Brothers, 1927."),
@@ -319,7 +329,7 @@ QUOTES = (
     Quote(id=211, quote="Press any key to continue or any other key to quit."),
     Quote(id=212, quote="Backup not found: (A)bort (R)etry (P)anic?"),
     Quote(
-        id=213, quote="I used dip switches and connector wires to speed up my computer. It works just finE*Åä^'=ö:.¨\~"
+        id=213, quote="I used dip switches and connector wires to speed up my computer. It works just finE*Åä^'=ö:.¨\\~"
     ),
     Quote(id=214, quote="Error! No keyboard detected. Press F1 to continue."),
     Quote(id=215, quote="Error! No mouse detected. Click here to continue."),
@@ -363,35 +373,41 @@ QUOTES = (
     ),
     Quote(
         id=248,
-        quote="The scientific theory I like best is that the rings of Saturn are composed entirely of lost airline luggage.",
+        quote="The scientific theory I like best is that the rings of Saturn "
+        "are composed entirely of lost airline luggage.",
         dedication="Mark Russell",
     ),
     Quote(id=249, quote="Me? A robot? That's ridiculous! For one thing, that doesn't compute at all!"),
     Quote(
         id=250,
-        quote='The most exciting phrase to hear in science, the one that heralds the most discoveries, is not "Eureka!"  (I found it!)  but "That\'s funny..."',
+        quote="The most exciting phrase to hear in science, the one that heralds the most discoveries, "
+        'is not "Eureka!"  (I found it!)  but "That\'s funny..."',
         dedication="Isaac Asimov",
     ),
     Quote(id=251, quote="To err is human, but engineers write detailed documents on how they managed it"),
     Quote(
         id=252,
-        quote="The brain is a wonderful organ. It starts working the moment you get up in the morning, and does not stop until you get into the office.",
+        quote="The brain is a wonderful organ. It starts working the moment you get up in the morning, "
+        "and does not stop until you get into the office.",
         dedication="Robert Frost",
     ),
     Quote(id=253, quote="Logic is the art of going wrong with confidence.", dedication="Joseph Wood Krutch"),
     Quote(
         id=254,
-        quote="The first man to fence in a piece of land saying 'This is mine' and who found people simple enough to believe him, was the real founder of civil society.",
+        quote="The first man to fence in a piece of land saying 'This is mine' "
+        "and who found people simple enough to believe him, was the real founder of civil society.",
         dedication="Jean-Jacques Rousseau",
     ),
     Quote(
         id=255,
-        quote="The trouble with this country is that there are too many politicians who believe, with a conviction based on experience, that you can fool all of the people all of the time.",
+        quote="The trouble with this country is that there are too many politicians who believe, "
+        "with a conviction based on experience, that you can fool all of the people all of the time.",
         dedication="Franklin P. Adams",
     ),
     Quote(
         id=256,
-        quote="The most essential mental quality for a free people, whose liberty is to be progressive, permanent and on a large scale, is much stupidity.",
+        quote="The most essential mental quality for a free people, whose liberty is to be progressive, "
+        "permanent and on a large scale, is much stupidity.",
         dedication="Walter Bagehot",
     ),
     Quote(
@@ -418,10 +434,15 @@ QUOTES = (
     Quote(id=268, quote="The only thing worse than a computer you can't control is a computer you can."),
     Quote(
         id=269,
-        quote="It is difficult to get a man to understand something when his salary depends upon his not understanding it.",
+        quote="It is difficult to get a man to understand something "
+        "when his salary depends upon his not understanding it.",
     ),
 )
 
 
 def get_db():
     return {q.id: q for q in QUOTES}
+
+
+def templates():
+    return Jinja2Templates(directory="templates")

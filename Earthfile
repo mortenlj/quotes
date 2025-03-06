@@ -20,7 +20,7 @@ docker:
 
     COPY --dir ./backend/+deps/.venv .
     COPY --dir ./backend/+build/quotes .
-    COPY --keep-ts --dir --platform=linux/amd64 ./frontend/+build/build .
+    COPY --dir ./backend/+build/templates .
 
     ENV PATH="/bin:/usr/bin:/usr/local/bin:/app/.venv/bin"
 
@@ -44,7 +44,6 @@ deploy:
     ARG main_image=ghcr.io/$EARTHLY_GIT_PROJECT_NAME
     ARG VERSION=$EARTHLY_GIT_SHORT_HASH
 
-    BUILD --platform=linux/amd64 ./frontend+build
     BUILD --platform=linux/amd64 --platform=linux/arm64 ./backend+build
     BUILD --platform=linux/amd64 --platform=linux/arm64 +docker --main_image=${main_image} --VERSION=${VERSION}
     BUILD --platform=linux/amd64 +manifests

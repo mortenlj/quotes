@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException, Header
 from fastapi.responses import RedirectResponse, PlainTextResponse
 from starlette import status
 
-from quotes.api.deps import get_db
+from quotes.deps import get_db
 from quotes.api.schemas import Quote
 
 router = APIRouter(

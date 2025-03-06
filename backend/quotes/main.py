@@ -4,9 +4,8 @@ import sys
 
 import uvicorn
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 
-from quotes import api
+from quotes import api, web
 from quotes.api import probes
 from quotes.config import settings
 from quotes.logger import get_log_config
@@ -21,7 +20,7 @@ class ExitOnSignal(Exception):
 app = FastAPI(title=TITLE, redoc_url=None)
 app.include_router(api.router, prefix="/api")
 app.include_router(probes.router, prefix="/_")
-app.mount("", StaticFiles(directory="build", html=True))
+app.include_router(web.router)
 
 
 def main():
