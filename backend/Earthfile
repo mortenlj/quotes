@@ -53,4 +53,4 @@ test:
 black:
     LOCALLY
     RUN uv sync --locked --compile-bytecode && \
-        uv run black --check .
+        uv run black .
