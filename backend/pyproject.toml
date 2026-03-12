@@ -23,5 +23,5 @@ target-version = ["py313"]
 [dependency-groups]
 dev = [
     "black==26.1.0",
-    "prospector==1.17.3",
+    "prospector==1.18.0",
 ]
