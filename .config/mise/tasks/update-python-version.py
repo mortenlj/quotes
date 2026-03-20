@@ -21,9 +21,10 @@ def _update_file(file_path, pattern, version):
 
 
 def _update_pyproject(version):
-    _update_file("backend/pyproject.toml", r"requires-python = \"~=(\d\.\d+)\"", version)
-    _update_file("backend/pyproject.toml", r"target-version = [\"py(\d+)\"]", version.replace(".", ""))
-
+    _update_file("pyproject.toml", r"requires-python = \"~=(\d\.\d+)\"", version)
+    _update_file(
+        "pyproject.toml", r"target-version = [\"py(\d+)\"]", version.replace(".", "")
+    )
 
 
 def _update_mise(version):
@@ -33,7 +34,7 @@ def _update_mise(version):
 
 def _sync_uv():
     print(f"Syncing virtualenv ...")
-    subprocess.run(["uv", "sync"], check=True, cwd="backend")
+    subprocess.run(["uv", "sync"], check=True)
 
 
 def _update_earthfiles(version):
@@ -53,5 +54,5 @@ def main():
     _sync_uv()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
