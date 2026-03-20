@@ -19,12 +19,12 @@ docker:
     WORKDIR /app
 
     COPY --dir ./backend/+deps/.venv .
-    COPY --dir ./backend/+build/quotes .
+    COPY --dir ./backend/+build/ibidem .
     COPY --dir ./backend/+build/templates .
 
     ENV PATH="/bin:/usr/bin:/usr/local/bin:/app/.venv/bin"
 
-    CMD ["/app/.venv/bin/python", "-m", "quotes"]
+    CMD ["/app/.venv/bin/python", "-m", "ibidem.quotes"]
 
     # builtins must be declared
     ARG EARTHLY_GIT_PROJECT_NAME

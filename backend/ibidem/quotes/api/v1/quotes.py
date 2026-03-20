@@ -5,8 +5,8 @@ from fastapi import APIRouter, Depends, HTTPException, Header
 from fastapi.responses import RedirectResponse, PlainTextResponse
 from starlette import status
 
-from quotes.deps import get_db
-from quotes.api.schemas import Quote
+from ibidem.quotes.deps import get_db
+from ibidem.quotes.api.schemas import Quote
 
 router = APIRouter(
     responses={404: {"detail": "Not found"}},

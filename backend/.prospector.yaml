@@ -11,7 +11,7 @@ ignore-paths:
   - dist
   - .tox
   - .cachedocs
-  - quotes/api/deps.py
+  - ibidem/quotes/api/deps.py
 
 pep8:
   disable:

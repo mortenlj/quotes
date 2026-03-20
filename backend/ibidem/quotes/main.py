@@ -5,10 +5,10 @@ import sys
 import uvicorn
 from fastapi import FastAPI
 
-from quotes import api, web
-from quotes.api import probes
-from quotes.config import settings
-from quotes.logger import get_log_config
+from ibidem.quotes import api, web
+from ibidem.quotes.api import probes
+from ibidem.quotes.config import settings
+from ibidem.quotes.logger import get_log_config
 
 TITLE = "Quotes"
 
@@ -32,7 +32,7 @@ def main():
     try:
         print(f"Starting {TITLE} with configuration {settings}")
         uvicorn.run(
-            "quotes.main:app",
+            "ibidem.quotes.main:app",
             host=settings.bind_address,
             port=settings.port,
             proxy_headers=True,

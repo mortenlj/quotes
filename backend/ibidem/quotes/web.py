@@ -5,7 +5,7 @@ from fastapi.responses import RedirectResponse, HTMLResponse
 from fastapi.templating import Jinja2Templates
 from starlette import status
 
-from quotes.deps import get_db, templates
+from ibidem.quotes.deps import get_db, templates
 
 router = APIRouter()
 
@@ -19,7 +19,12 @@ def get_random_quote(db: dict = Depends(get_db)):
 
 
 @router.get("/{id}", response_class=HTMLResponse)
-def get_quote(request: Request, id: int, db: dict = Depends(get_db), templates: Jinja2Templates = Depends(templates)):
+def get_quote(
+    request: Request,
+    id: int,
+    db: dict = Depends(get_db),
+    templates: Jinja2Templates = Depends(templates),
+):
     quote = db.get(id)
     if quote is None:
         raise HTTPException(status_code=404, detail="Quote not found")

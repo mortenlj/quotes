@@ -36,11 +36,11 @@ build:
 
     RUN uv sync --locked --compile-bytecode --group=dev
 
-    COPY --dir .prospector.yaml quotes templates .
+    COPY --dir .prospector.yaml ibidem templates .
     RUN uv run black --check . && \
         uv run prospector
 
-    SAVE ARTIFACT quotes
+    SAVE ARTIFACT ibidem
     SAVE ARTIFACT templates
     SAVE IMAGE --cache-hint
 

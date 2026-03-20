@@ -1,6 +1,6 @@
 from fastapi.templating import Jinja2Templates
 
-from quotes.api.schemas import Quote
+from ibidem.quotes.api.schemas import Quote
 
 
 def next_i():
@@ -15,10 +15,19 @@ id_gen = next_i()
 QUOTES = (
     Quote(id=next(id_gen), quote="/earth is 98% full...  Please delete anyone you can."),
     Quote(id=next(id_gen), quote="10.0 times 0.1 is hardly ever 1.0."),
-    Quote(id=next(id_gen), quote="A bad random number generator:  1, 1, 1, 1, 1, 4.33e+67, 1, 1, 1"),
+    Quote(
+        id=next(id_gen),
+        quote="A bad random number generator:  1, 1, 1, 1, 1, 4.33e+67, 1, 1, 1",
+    ),
     Quote(id=next(id_gen), quote="A bug in the hand is better than one as yet undetected."),
-    Quote(id=next(id_gen), quote="A computer program does what you tell it to do, not what you want it to do."),
-    Quote(id=next(id_gen), quote="A Computer Scientist is someone who fixes things that aren't broken."),
+    Quote(
+        id=next(id_gen),
+        quote="A computer program does what you tell it to do, not what you want it to do.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="A Computer Scientist is someone who fixes things that aren't broken.",
+    ),
     Quote(id=next(id_gen), quote="After a number of decimal places, nobody gives a damn."),
     Quote(id=next(id_gen), quote="An elephant is a mouse with an operating system."),
     Quote(id=next(id_gen), quote="And on the seventh day, he exited from append mode."),
@@ -32,106 +41,269 @@ QUOTES = (
         quote="As far as we know, our computer has never had an undetected error.",
         dedication="Weisert",
     ),
-    Quote(id=next(id_gen), quote="Asking whether machines can think is like asking whether submarines can swim."),
+    Quote(
+        id=next(id_gen),
+        quote="Asking whether machines can think is like asking whether submarines can swim.",
+    ),
     Quote(id=next(id_gen), quote="Avoid temporary variables and strange women."),
     Quote(
-        id=next(id_gen), quote="Base 8 is just like base 10, if you are missing two fingers.", dedication="Tom Lehrer"
+        id=next(id_gen),
+        quote="Base 8 is just like base 10, if you are missing two fingers.",
+        dedication="Tom Lehrer",
     ),
-    Quote(id=next(id_gen), quote="Beware of programmers who carry screwdrivers.", dedication="Leonard Brandwein"),
+    Quote(
+        id=next(id_gen),
+        quote="Beware of programmers who carry screwdrivers.",
+        dedication="Leonard Brandwein",
+    ),
     Quote(id=next(id_gen), quote="Breakthrough:  It finally booted on the first try."),
-    Quote(id=next(id_gen), quote="Compatible: Gracefully accepts erroneous data from any source."),
-    Quote(id=next(id_gen), quote="Computers are a more fun way to do the same work you'd have to do without them."),
+    Quote(
+        id=next(id_gen),
+        quote="Compatible: Gracefully accepts erroneous data from any source.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Computers are a more fun way to do the same work you'd have to do without them.",
+    ),
     Quote(id=next(id_gen), quote="Disc Space -- The Final Frontier!"),
-    Quote(id=next(id_gen), quote="Disclaimer: Any errors in spelling, tact, or fact are transmission errors."),
+    Quote(
+        id=next(id_gen),
+        quote="Disclaimer: Any errors in spelling, tact, or fact are transmission errors.",
+    ),
     Quote(id=next(id_gen), quote="Don't hit the keys so hard, it hurts."),
-    Quote(id=next(id_gen), quote="Every program in development at MIT expands until it can read mail."),
-    Quote(id=next(id_gen), quote="Every program is a part of some other program, and rarely fits."),
+    Quote(
+        id=next(id_gen),
+        quote="Every program in development at MIT expands until it can read mail.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Every program is a part of some other program, and rarely fits.",
+    ),
     Quote(id=next(id_gen), quote="Foolproof Operation:  All parameters are hard coded."),
     Quote(id=next(id_gen), quote="Fortune:  No such file or directory"),
-    Quote(id=next(id_gen), quote="Futuristic: It will only run on a next generation supercomputer."),
-    Quote(id=next(id_gen), quote="Hardware: The parts of a computer system that can be kicked."),
-    Quote(id=next(id_gen), quote="Host system not responding, probably down.  Do you want to wait?  (Y/N)"),
-    Quote(id=next(id_gen), quote="I am a computer -- Dumber than any human and smarter than an administrator."),
-    Quote(id=next(id_gen), quote="I am still waiting for the advent of the computer science groupie."),
+    Quote(
+        id=next(id_gen),
+        quote="Futuristic: It will only run on a next generation supercomputer.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Hardware: The parts of a computer system that can be kicked.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Host system not responding, probably down.  Do you want to wait?  (Y/N)",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="I am a computer -- Dumber than any human and smarter than an administrator.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="I am still waiting for the advent of the computer science groupie.",
+    ),
     Quote(id=next(id_gen), quote="I am the computer your mother warned you about."),
     Quote(id=next(id_gen), quote="I came, I saw, I deleted all your files."),
-    Quote(id=next(id_gen), quote="I haven't lost my mind; It's backed up on tape somewhere."),
-    Quote(id=next(id_gen), quote='If a "Train station" is where the train stops, what is a "Work station"?'),
-    Quote(id=next(id_gen), quote="If God had intended man to program, we would be born with serial I/O ports."),
-    Quote(id=next(id_gen), quote="If it was easy, the hardware people would take care of it."),
-    Quote(id=next(id_gen), quote="It is now pitch dark. If you proceed, you will likely fall into a pit."),
-    Quote(id=next(id_gen), quote="It is ten o'clock; Do you know where your processes are?"),
+    Quote(
+        id=next(id_gen),
+        quote="I haven't lost my mind; It's backed up on tape somewhere.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote='If a "Train station" is where the train stops, what is a "Work station"?',
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="If God had intended man to program, we would be born with serial I/O ports.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="If it was easy, the hardware people would take care of it.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="It is now pitch dark. If you proceed, you will likely fall into a pit.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="It is ten o'clock; Do you know where your processes are?",
+    ),
     Quote(id=next(id_gen), quote="Kiss your keyboard goodbye!"),
     Quote(id=next(id_gen), quote="Last one out, turn off the computer!"),
-    Quote(id=next(id_gen), quote="Life would be so much easier if we could just look at the source code."),
-    Quote(id=next(id_gen), quote="Lisp users: Due to the holiday, there will be no garbage collection on monday."),
-    Quote(id=next(id_gen), quote="Long computations that yield zero are probably all for naught."),
-    Quote(id=next(id_gen), quote="Machine-independent:  Does not run on any existing machine."),
+    Quote(
+        id=next(id_gen),
+        quote="Life would be so much easier if we could just look at the source code.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Lisp users: Due to the holiday, there will be no garbage collection on monday.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Long computations that yield zero are probably all for naught.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Machine-independent:  Does not run on any existing machine.",
+    ),
     Quote(id=next(id_gen), quote="Manual writer's creed:  Garbage in, gospel out."),
     Quote(
-        id=next(id_gen), quote="Maybe computer science should be in the college of theology.", dedication="R. S. Barton"
+        id=next(id_gen),
+        quote="Maybe computer science should be in the college of theology.",
+        dedication="R. S. Barton",
     ),
     Quote(id=next(id_gen), quote="Meets Quality Standards:  Compiles without errors."),
     Quote(id=next(id_gen), quote="MIPS:  Meaningless Indicator Of Processor Speed."),
-    Quote(id=next(id_gen), quote='Netnews is like yelling, "Anyone want to buy a used car?" in a crowded theater.'),
-    Quote(id=next(id_gen), quote="Never trust a computer you can't lift.", dedication="Stan Masor"),
+    Quote(
+        id=next(id_gen),
+        quote='Netnews is like yelling, "Anyone want to buy a used car?" in a crowded theater.',
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Never trust a computer you can't lift.",
+        dedication="Stan Masor",
+    ),
     Quote(id=next(id_gen), quote="Nice computers don't go down."),
-    Quote(id=next(id_gen), quote="No program done by a hacker will work unless he is on the system."),
-    Quote(id=next(id_gen), quote="No program done by an undergrad will work after she graduates."),
-    Quote(id=next(id_gen), quote="People who deal with bits should expect to get bitten.", dedication="Jon Bentley"),
+    Quote(
+        id=next(id_gen),
+        quote="No program done by a hacker will work unless he is on the system.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="No program done by an undergrad will work after she graduates.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="People who deal with bits should expect to get bitten.",
+        dedication="Jon Bentley",
+    ),
     Quote(id=next(id_gen), quote="Portable: Survives system reboot."),
     Quote(id=next(id_gen), quote="Programming Department:  Mistakes made while you wait."),
     Quote(id=next(id_gen), quote="Programming is an unnatural act."),
-    Quote(id=next(id_gen), quote="Programming just with goto's is like swatting flies with a sledgehammer."),
+    Quote(
+        id=next(id_gen),
+        quote="Programming just with goto's is like swatting flies with a sledgehammer.",
+    ),
     Quote(id=next(id_gen), quote="Protect your software at all costs -- All else is meat."),
     Quote(id=next(id_gen), quote="Random access is the optimum of the mass storages."),
     Quote(id=next(id_gen), quote="Real programs don't eat cache."),
     Quote(id=next(id_gen), quote="Remember the good old days, when CPU was singular?"),
     Quote(id=next(id_gen), quote="Revolutionary:  Disk drives go round and round."),
-    Quote(id=next(id_gen), quote="Some programming languages manage to absorb change but withstand progress."),
+    Quote(
+        id=next(id_gen),
+        quote="Some programming languages manage to absorb change but withstand progress.",
+    ),
     Quote(id=next(id_gen), quote="System going down at 1:45 for disk crashing."),
     Quote(id=next(id_gen), quote="System going down at 5 pm to install scheduler bug."),
-    Quote(id=next(id_gen), quote="Systems programmers are the high priests of a low cult.", dedication="R. S. Barton"),
-    Quote(id=next(id_gen), quote="The attention span of a computer is only as long as its power cord."),
-    Quote(id=next(id_gen), quote="The computer is mightier than the pen, the sword, and usually, the programmer."),
-    Quote(id=next(id_gen), quote="The determined programmer can write a fortran program in any language."),
-    Quote(id=next(id_gen), quote="The generation of random numbers is too important to be left to chance."),
-    Quote(id=next(id_gen), quote='The next generation of computers will have a "Warranty expired" interrupt.'),
-    Quote(id=next(id_gen), quote="The program is absolutely right; Therefore, the computer must be wrong."),
+    Quote(
+        id=next(id_gen),
+        quote="Systems programmers are the high priests of a low cult.",
+        dedication="R. S. Barton",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="The attention span of a computer is only as long as its power cord.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="The computer is mightier than the pen, the sword, and usually, the programmer.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="The determined programmer can write a fortran program in any language.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="The generation of random numbers is too important to be left to chance.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote='The next generation of computers will have a "Warranty expired" interrupt.',
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="The program is absolutely right; Therefore, the computer must be wrong.",
+    ),
     Quote(id=next(id_gen), quote="The world is coming to an end... Save your buffers!!"),
     Quote(id=next(id_gen), quote="The world will end in 5 minutes. Please log out."),
-    Quote(id=next(id_gen), quote="There are two ways to write error-free programs; Only the third one works."),
+    Quote(
+        id=next(id_gen),
+        quote="There are two ways to write error-free programs; Only the third one works.",
+    ),
     Quote(id=next(id_gen), quote="There must be more to life than compile-and-go."),
-    Quote(id=next(id_gen), quote="This fortune soaks up 47 times its own weight in excess memory."),
+    Quote(
+        id=next(id_gen),
+        quote="This fortune soaks up 47 times its own weight in excess memory.",
+    ),
     Quote(id=next(id_gen), quote="This login session:  $13.76, but for you:  $11.88."),
     Quote(id=next(id_gen), quote="This screen intentionally left blank."),
     Quote(id=next(id_gen), quote="This system will self-destruct in five minutes."),
     Quote(id=next(id_gen), quote="Those who can't write, write help files."),
-    Quote(id=next(id_gen), quote="To err is human; To forgive, beyond the scope of the operating system."),
-    Quote(id=next(id_gen), quote="To err is human; To really foul things up requires a computer."),
-    Quote(id=next(id_gen), quote="To iterate is human; To recurse, divine.", dedication="Robert Heller"),
-    Quote(id=next(id_gen), quote="Unprecedented performance:  Nothing ever ran this slow before."),
-    Quote(id=next(id_gen), quote='Where the system is concerned, you are not allowed to ask "Why?".'),
-    Quote(id=next(id_gen), quote="Why do we want intelligent terminals when there are so many stupid users?"),
+    Quote(
+        id=next(id_gen),
+        quote="To err is human; To forgive, beyond the scope of the operating system.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="To err is human; To really foul things up requires a computer.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="To iterate is human; To recurse, divine.",
+        dedication="Robert Heller",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Unprecedented performance:  Nothing ever ran this slow before.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote='Where the system is concerned, you are not allowed to ask "Why?".',
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Why do we want intelligent terminals when there are so many stupid users?",
+    ),
     Quote(id=next(id_gen), quote="You can't go home again, unless you set $HOME."),
     Quote(id=next(id_gen), quote="You can't make a program without broken egos."),
     Quote(id=next(id_gen), quote="You depend too much on computers for information."),
-    Quote(id=next(id_gen), quote="You forgot to do your backup 16 days ago.  Tomorrow you will need that version."),
-    Quote(id=next(id_gen), quote="You had mail, but the super-user read it, and deleted it!"),
-    Quote(id=next(id_gen), quote="You have a tendency to feel you are superior to most computers."),
+    Quote(
+        id=next(id_gen),
+        quote="You forgot to do your backup 16 days ago.  Tomorrow you will need that version.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="You had mail, but the super-user read it, and deleted it!",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="You have a tendency to feel you are superior to most computers.",
+    ),
     Quote(id=next(id_gen), quote="You have junk mail."),
-    Quote(id=next(id_gen), quote="You know it is going to be a bad day when you forget your new password."),
+    Quote(
+        id=next(id_gen),
+        quote="You know it is going to be a bad day when you forget your new password.",
+    ),
     Quote(id=next(id_gen), quote="You might have mail."),
-    Quote(id=next(id_gen), quote="You never finish a program, you just stop working on it."),
+    Quote(
+        id=next(id_gen),
+        quote="You never finish a program, you just stop working on it.",
+    ),
     Quote(id=next(id_gen), quote="Your password is pitifully obvious."),
-    Quote(id=next(id_gen), quote="If anything can go wrong, it will.", dedication="Murphys Law §1"),
+    Quote(
+        id=next(id_gen),
+        quote="If anything can go wrong, it will.",
+        dedication="Murphys Law §1",
+    ),
     Quote(
         id=next(id_gen),
         quote="If there is a possibility of several things going wrong, the one that will cause the most "
         "damage will be the first one to go wrong.",
         dedication="Murphys Law §2",
     ),
-    Quote(id=next(id_gen), quote="If anything just cannot go wrong, it will anyway.  --  Murphys Law §3"),
+    Quote(
+        id=next(id_gen),
+        quote="If anything just cannot go wrong, it will anyway.  --  Murphys Law §3",
+    ),
     Quote(
         id=next(id_gen),
         quote="If you perceive that there are four possible ways in which something can go wrong, "
@@ -139,14 +311,20 @@ QUOTES = (
         dedication="Murphys Law §4",
     ),
     Quote(
-        id=next(id_gen), quote="Left to themselves, things tend to go from bad to worse.", dedication="Murphys Law §5"
+        id=next(id_gen),
+        quote="Left to themselves, things tend to go from bad to worse.",
+        dedication="Murphys Law §5",
     ),
     Quote(
         id=next(id_gen),
         quote="If everything seems to be going well, you have obviously overlooked something.",
         dedication="Murphys Law §6",
     ),
-    Quote(id=next(id_gen), quote="Nature always sides with the hidden flaw.", dedication="Murphys Law §7"),
+    Quote(
+        id=next(id_gen),
+        quote="Nature always sides with the hidden flaw.",
+        dedication="Murphys Law §7",
+    ),
     Quote(id=next(id_gen), quote="Mother nature is a bitch.", dedication="Murphys Law §8"),
     Quote(
         id=next(id_gen),
@@ -159,11 +337,20 @@ QUOTES = (
         dedication="Weiler's Law",
     ),
     Quote(id=next(id_gen), quote="Any given program, when running, is obsolete."),
-    Quote(id=next(id_gen), quote="Any given program costs more and takes longer each time it is run."),
+    Quote(
+        id=next(id_gen),
+        quote="Any given program costs more and takes longer each time it is run.",
+    ),
     Quote(id=next(id_gen), quote="If a program is useful, it will have to be changed."),
     Quote(id=next(id_gen), quote="If a program is useless, it will have to be documented."),
-    Quote(id=next(id_gen), quote="Any given program will expand to fill all the available memory."),
-    Quote(id=next(id_gen), quote="The value of a program is inversely proportional to the weight of its output."),
+    Quote(
+        id=next(id_gen),
+        quote="Any given program will expand to fill all the available memory.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="The value of a program is inversely proportional to the weight of its output.",
+    ),
     Quote(
         id=next(id_gen),
         quote="Program complexity grows until it exceeds the capability of the programmer who must maintain it.",
@@ -185,8 +372,16 @@ QUOTES = (
         dedication="Weinberg's Second Law",
     ),
     Quote(id=next(id_gen), quote="It Won't Work.", dedication="Jenkinson's Law"),
-    Quote(id=next(id_gen), quote="Anything that begins well ends badly.", dedication="Pudders Law §1"),
-    Quote(id=next(id_gen), quote="Anything that begins badly ends worse.", dedication="Pudders Law §2"),
+    Quote(
+        id=next(id_gen),
+        quote="Anything that begins well ends badly.",
+        dedication="Pudders Law §1",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Anything that begins badly ends worse.",
+        dedication="Pudders Law §2",
+    ),
     Quote(
         id=next(id_gen),
         quote="No books are lost by lending except those you particularly wanted to keep.",
@@ -199,7 +394,10 @@ QUOTES = (
         "that are either entirely obscure or else completely mysterious.",
         dedication="Flap's Law",
     ),
-    Quote(id=next(id_gen), quote="ATTENTION, all abducting aliens!  you DON'T need to RETURN them!"),
+    Quote(
+        id=next(id_gen),
+        quote="ATTENTION, all abducting aliens!  you DON'T need to RETURN them!",
+    ),
     Quote(
         id=next(id_gen),
         quote="The difference between fiction and reality is that fiction has to make sense.",
@@ -324,32 +522,59 @@ QUOTES = (
     Quote(id=next(id_gen), quote="[If you can't hear me, it's because I'm in parentheses]"),
     Quote(id=next(id_gen), quote="Every morning is the dawn of a new error..."),
     Quote(id=next(id_gen), quote="Cannot find REALITY.SYS. Universe halted."),
-    Quote(id=next(id_gen), quote="COFFEE.EXE Missing - Insert Cup and Press Any Key to continue."),
+    Quote(
+        id=next(id_gen),
+        quote="COFFEE.EXE Missing - Insert Cup and Press Any Key to continue.",
+    ),
     Quote(id=next(id_gen), quote="Buy a Pentium III so you can reboot faster."),
     Quote(id=next(id_gen), quote="Computers make very fast, very accurate mistakes."),
-    Quote(id=next(id_gen), quote="Computers are not intelligent. They only think they are."),
-    Quote(id=next(id_gen), quote="My software never has bugs. It just develops random features."),
-    Quote(id=next(id_gen), quote='Best file compression around: "DEL *.*" = 100% compression.'),
-    Quote(id=next(id_gen), quote="The Definition of an Upgrade: Take old bugs out, put new ones in."),
+    Quote(
+        id=next(id_gen),
+        quote="Computers are not intelligent. They only think they are.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="My software never has bugs. It just develops random features.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote='Best file compression around: "DEL *.*" = 100% compression.',
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="The Definition of an Upgrade: Take old bugs out, put new ones in.",
+    ),
     Quote(id=next(id_gen), quote="BREAKFAST.COM Halted. Cereal port not responding."),
     Quote(id=next(id_gen), quote="The name is Baud, James Baud."),
     Quote(id=next(id_gen), quote="Access denied. Thought you could get in?"),
     Quote(id=next(id_gen), quote="Bad command or file name! Go stand in the corner."),
     Quote(id=next(id_gen), quote="Bad command. Bad, bad, command! Sit! Bark! Stay!"),
-    Quote(id=next(id_gen), quote='Why doesn\'t DOS ever say "EXCELLENT command or filename?"'),
+    Quote(
+        id=next(id_gen),
+        quote='Why doesn\'t DOS ever say "EXCELLENT command or filename?"',
+    ),
     Quote(id=next(id_gen), quote="As a computer, I find your faith in technology amusing."),
     Quote(id=next(id_gen), quote="File not found. Should I fake it? (y/n)"),
     Quote(id=next(id_gen), quote="Ethernet: Something used to catch the EtherBunny."),
     Quote(id=next(id_gen), quote="An error? Impossible! My modem is error correcting."),
     Quote(id=next(id_gen), quote="CONGRESS.SYS Corrupted: Reboot Washington D.C? (y/n)"),
     Quote(id=next(id_gen), quote="Does fuzzy logic tickle?"),
-    Quote(id=next(id_gen), quote="The magic of Windows: Turns a Pentium into an XT, instantly."),
+    Quote(
+        id=next(id_gen),
+        quote="The magic of Windows: Turns a Pentium into an XT, instantly.",
+    ),
     Quote(id=next(id_gen), quote="SENILE.COM found. Out of memory."),
     Quote(id=next(id_gen), quote="Who's General Failure and why is he reading my disk?"),
     Quote(id=next(id_gen), quote="Ultimate office automation: networked coffee."),
-    Quote(id=next(id_gen), quote="Shell to DOS... Come in DOS, this is Shell calling, do you copy?"),
+    Quote(
+        id=next(id_gen),
+        quote="Shell to DOS... Come in DOS, this is Shell calling, do you copy?",
+    ),
     Quote(id=next(id_gen), quote="All computers wait at the same speed."),
-    Quote(id=next(id_gen), quote="Defination of a computer: A device designed to speed up and automate errors."),
+    Quote(
+        id=next(id_gen),
+        quote="Defination of a computer: A device designed to speed up and automate errors.",
+    ),
     Quote(id=next(id_gen), quote="Press <CTRL>-<ALT>-<DEL> to continue."),
     Quote(id=next(id_gen), quote="AscII a stupid question, get a stupid ANSI!"),
     Quote(id=next(id_gen), quote="E-mail returned to sender. Insufficient voltage."),
@@ -374,9 +599,15 @@ QUOTES = (
         quote='My computer said that "Insert disk #3" but I couldn\'t get more than one disk fit in at a time!',
     ),
     Quote(id=next(id_gen), quote="Bug? That's not a bug, that's a random feature!"),
-    Quote(id=next(id_gen), quote='The computer programmer\'s national anthem is "AAAAAARRRRGGGGHHH!"'),
+    Quote(
+        id=next(id_gen),
+        quote='The computer programmer\'s national anthem is "AAAAAARRRRGGGGHHH!"',
+    ),
     Quote(id=next(id_gen), quote="If at first you don't succeed, call it a version 1.0."),
-    Quote(id=next(id_gen), quote="Asking if computers can think, is like asking if submarines can swim."),
+    Quote(
+        id=next(id_gen),
+        quote="Asking if computers can think, is like asking if submarines can swim.",
+    ),
     Quote(id=next(id_gen), quote='Todays UNIX command: "EXSOP" = Execute System Operator.'),
     Quote(id=next(id_gen), quote="Computer programming is an artform that fights back."),
     Quote(id=next(id_gen), quote='Dad, what does "FORMATTING DRIVE C: 90% DONE" mean?'),
@@ -390,18 +621,38 @@ QUOTES = (
     Quote(id=next(id_gen), quote="Horrible Bug Encountered. No idea what has happened."),
     Quote(id=next(id_gen), quote="Running low on diskspace. Free at least 2GB."),
     Quote(id=next(id_gen), quote="Windows Closed. You can't look outside now."),
-    Quote(id=next(id_gen), quote="Unexplained Error. Please tell the programmer how is this possible."),
+    Quote(
+        id=next(id_gen),
+        quote="Unexplained Error. Please tell the programmer how is this possible.",
+    ),
     Quote(id=next(id_gen), quote="Keyboard Locked. Try anything you can think of."),
     Quote(
-        id=next(id_gen), quote="Illegal Error. You are not allowed to get this error, next time you will be punished."
+        id=next(id_gen),
+        quote="Illegal Error. You are not allowed to get this error, next time you will be punished.",
     ),
-    Quote(id=next(id_gen), quote="Timing Error. Please wait, and wait, and wait, and wait..."),
-    Quote(id=next(id_gen), quote="Process running. If not ready in 10 minutes, wait longer."),
-    Quote(id=next(id_gen), quote="This will end your Windows session, do you wish to play another game?"),
-    Quote(id=next(id_gen), quote="Timeout Error. Operator fell asleep waiting for the system to boot."),
-    Quote(id=next(id_gen), quote="Error! Computer hungry. Insert hamburger in drive A: and press Y to continue."),
     Quote(
-        id=next(id_gen), quote="Error! Programmer running out of cash. Insert Wallet in drive A: and remove when empty."
+        id=next(id_gen),
+        quote="Timing Error. Please wait, and wait, and wait, and wait...",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Process running. If not ready in 10 minutes, wait longer.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="This will end your Windows session, do you wish to play another game?",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Timeout Error. Operator fell asleep waiting for the system to boot.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Error! Computer hungry. Insert hamburger in drive A: and press Y to continue.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Error! Programmer running out of cash. Insert Wallet in drive A: and remove when empty.",
     ),
     Quote(
         id=next(id_gen),
@@ -414,21 +665,31 @@ QUOTES = (
         "entirely of lost airline luggage.",
         dedication="Mark Russell",
     ),
-    Quote(id=next(id_gen), quote="Me? A robot? That's ridiculous! For one thing, that doesn't compute at all!"),
+    Quote(
+        id=next(id_gen),
+        quote="Me? A robot? That's ridiculous! For one thing, that doesn't compute at all!",
+    ),
     Quote(
         id=next(id_gen),
         quote="The most exciting phrase to hear in science, the one that heralds the most discoveries, "
         'is not "Eureka!"  (I found it!)  but "That\'s funny..."',
         dedication="Isaac Asimov",
     ),
-    Quote(id=next(id_gen), quote="To err is human, but engineers write detailed documents on how they managed it"),
+    Quote(
+        id=next(id_gen),
+        quote="To err is human, but engineers write detailed documents on how they managed it",
+    ),
     Quote(
         id=next(id_gen),
         quote="The brain is a wonderful organ. It starts working the moment you get up in the morning, "
         "and does not stop until you get into the office.",
         dedication="Robert Frost",
     ),
-    Quote(id=next(id_gen), quote="Logic is the art of going wrong with confidence.", dedication="Joseph Wood Krutch"),
+    Quote(
+        id=next(id_gen),
+        quote="Logic is the art of going wrong with confidence.",
+        dedication="Joseph Wood Krutch",
+    ),
     Quote(
         id=next(id_gen),
         quote="The first man to fence in a piece of land saying 'This is mine' "
@@ -461,31 +722,50 @@ QUOTES = (
     Quote(id=next(id_gen), quote="Dejamoo : The feeling you've heard this bull before"),
     Quote(id=next(id_gen), quote="The only Mac I trust is MacGyver."),
     Quote(
-        id=next(id_gen), quote="Programming from a spec is like walking on water.... Its easier to do when it's frozen."
+        id=next(id_gen),
+        quote="Programming from a spec is like walking on water.... Its easier to do when it's frozen.",
     ),
-    Quote(id=next(id_gen), quote="It's a 'timing' problem. It is just not time for the software to work, yet."),
+    Quote(
+        id=next(id_gen),
+        quote="It's a 'timing' problem. It is just not time for the software to work, yet.",
+    ),
     Quote(
         id=next(id_gen),
         quote="We agree that the software performs to specification, but the specification does not make sense.",
     ),
-    Quote(id=next(id_gen), quote="I do object-oriented programming - if the customer objects, I do more programming."),
+    Quote(
+        id=next(id_gen),
+        quote="I do object-oriented programming - if the customer objects, I do more programming.",
+    ),
     Quote(id=next(id_gen), quote="It is easier to port a shell than a shell script."),
-    Quote(id=next(id_gen), quote="The only intuitive interface is the nipple. After that, it's all learned."),
-    Quote(id=next(id_gen), quote="The only thing worse than a computer you can't control is a computer you can."),
+    Quote(
+        id=next(id_gen),
+        quote="The only intuitive interface is the nipple. After that, it's all learned.",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="The only thing worse than a computer you can't control is a computer you can.",
+    ),
     Quote(
         id=next(id_gen),
         quote="It is difficult to get a man to understand something when his salary "
         "depends upon his not understanding it.",
     ),
     Quote(
-        id=next(id_gen), quote="Even the smallest person can change the course of the future.", dedication="Galadriel"
+        id=next(id_gen),
+        quote="Even the smallest person can change the course of the future.",
+        dedication="Galadriel",
     ),
     Quote(
         id=next(id_gen),
         quote="All we have to decide is what to do with the time that is given us.",
         dedication="Gandalf",
     ),
-    Quote(id=next(id_gen), quote="Not all those who wander are lost.", dedication="Bilbo Baggins"),
+    Quote(
+        id=next(id_gen),
+        quote="Not all those who wander are lost.",
+        dedication="Bilbo Baggins",
+    ),
     Quote(
         id=next(id_gen),
         quote="There’s some good in this world, Mr. Frodo. And it’s worth fighting for.",
@@ -496,13 +776,21 @@ QUOTES = (
         quote="I would rather share one lifetime with you than face all the ages of this world alone.",
         dedication="Arwen",
     ),
-    Quote(id=next(id_gen), quote="One does not simply walk into Mordor.", dedication="Boromir"),
+    Quote(
+        id=next(id_gen),
+        quote="One does not simply walk into Mordor.",
+        dedication="Boromir",
+    ),
     Quote(
         id=next(id_gen),
         quote="The world is indeed full of peril and in it there are many dark places.",
         dedication="Haldir",
     ),
-    Quote(id=next(id_gen), quote="Deeds will not be less valiant because they are unpraised.", dedication="Aragorn"),
+    Quote(
+        id=next(id_gen),
+        quote="Deeds will not be less valiant because they are unpraised.",
+        dedication="Aragorn",
+    ),
     Quote(id=next(id_gen), quote="You shall not pass!", dedication="Gandalf"),
     Quote(id=next(id_gen), quote="I am no man!", dedication="Éowyn"),
     Quote(
@@ -515,7 +803,11 @@ QUOTES = (
         quote="There’s no going back. We only have to keep moving forward.",
         dedication="Samwise Gamgee",
     ),
-    Quote(id=next(id_gen), quote="The ring has awoken, it’s heard its master’s call.", dedication="Gandalf"),
+    Quote(
+        id=next(id_gen),
+        quote="The ring has awoken, it’s heard its master’s call.",
+        dedication="Gandalf",
+    ),
     Quote(
         id=next(id_gen),
         quote="I wish the ring had never come to me. I wish none of this had happened.",
@@ -526,26 +818,50 @@ QUOTES = (
         quote="So do all who live to see such times, but that is not for them to decide.",
         dedication="Gandalf",
     ),
-    Quote(id=next(id_gen), quote="Faithless is he that says farewell when the road darkens.", dedication="Gimli"),
-    Quote(id=next(id_gen), quote="The board is set, the pieces are moving.", dedication="Gandalf"),
+    Quote(
+        id=next(id_gen),
+        quote="Faithless is he that says farewell when the road darkens.",
+        dedication="Gimli",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="The board is set, the pieces are moving.",
+        dedication="Gandalf",
+    ),
     Quote(
         id=next(id_gen),
         quote="There is no curse in Elvish, Entish, or the tongues of Men for this treachery.",
         dedication="Treebeard",
     ),
-    Quote(id=next(id_gen), quote="I will take the Ring, though I do not know the way.", dedication="Frodo Baggins"),
-    Quote(id=next(id_gen), quote="It’s a dangerous business, Frodo, going out your door.", dedication="Bilbo Baggins"),
+    Quote(
+        id=next(id_gen),
+        quote="I will take the Ring, though I do not know the way.",
+        dedication="Frodo Baggins",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="It’s a dangerous business, Frodo, going out your door.",
+        dedication="Bilbo Baggins",
+    ),
     Quote(
         id=next(id_gen),
         quote="You have my sword. And you have my bow. And my axe.",
         dedication="Aragorn, Legolas, Gimli",
     ),
-    Quote(id=next(id_gen), quote="I can’t carry it for you, but I can carry you.", dedication="Samwise Gamgee"),
     Quote(
-        id=next(id_gen), quote="The time of the Elves is over. My people are leaving these shores.", dedication="Elrond"
+        id=next(id_gen),
+        quote="I can’t carry it for you, but I can carry you.",
+        dedication="Samwise Gamgee",
     ),
     Quote(
-        id=next(id_gen), quote="I would have followed you, my brother... my captain... my king.", dedication="Boromir"
+        id=next(id_gen),
+        quote="The time of the Elves is over. My people are leaving these shores.",
+        dedication="Elrond",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="I would have followed you, my brother... my captain... my king.",
+        dedication="Boromir",
     ),
     Quote(id=next(id_gen), quote="There is always hope.", dedication="Aragorn"),
     Quote(
@@ -553,16 +869,32 @@ QUOTES = (
         quote="The road goes ever on and on, down from the door where it began.",
         dedication="Bilbo Baggins",
     ),
-    Quote(id=next(id_gen), quote="I will not say: do not weep; for not all tears are an evil.", dedication="Gandalf"),
-    Quote(id=next(id_gen), quote="Courage is found in unlikely places.", dedication="Gildor Inglorion"),
-    Quote(id=next(id_gen), quote="The shadow does not hold sway yet.", dedication="Aragorn"),
+    Quote(
+        id=next(id_gen),
+        quote="I will not say: do not weep; for not all tears are an evil.",
+        dedication="Gandalf",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Courage is found in unlikely places.",
+        dedication="Gildor Inglorion",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="The shadow does not hold sway yet.",
+        dedication="Aragorn",
+    ),
     Quote(
         id=next(id_gen),
         quote="You step into the Road, and if you don't keep your feet, "
         "there is no knowing where you might be swept off to.",
         dedication="Bilbo Baggins",
     ),
-    Quote(id=next(id_gen), quote="Oft hope is born when all is forlorn.", dedication="Legolas"),
+    Quote(
+        id=next(id_gen),
+        quote="Oft hope is born when all is forlorn.",
+        dedication="Legolas",
+    ),
     Quote(
         id=next(id_gen),
         quote="The wide world is all about you: you can fence yourselves in, but you cannot forever fence it out.",
@@ -574,15 +906,31 @@ QUOTES = (
         dedication="Galadriel",
     ),
     Quote(id=next(id_gen), quote="Go where you must go, and hope!", dedication="Gandalf"),
-    Quote(id=next(id_gen), quote="A single leaf turns the fate of the forest.", dedication="Legolas"),
-    Quote(id=next(id_gen), quote="In silence, the mountains remember every footstep.", dedication="Gimli"),
-    Quote(id=next(id_gen), quote="Even shadows must give way when the dawn arrives.", dedication="Arwen"),
+    Quote(
+        id=next(id_gen),
+        quote="A single leaf turns the fate of the forest.",
+        dedication="Legolas",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="In silence, the mountains remember every footstep.",
+        dedication="Gimli",
+    ),
+    Quote(
+        id=next(id_gen),
+        quote="Even shadows must give way when the dawn arrives.",
+        dedication="Arwen",
+    ),
     Quote(
         id=next(id_gen),
         quote="Bravery is not the absence of fear, but the choice to face it.",
         dedication="Frodo Baggins",
     ),
-    Quote(id=next(id_gen), quote="Songs of old echo loudest in the hearts of the young.", dedication="Samwise Gamgee"),
+    Quote(
+        id=next(id_gen),
+        quote="Songs of old echo loudest in the hearts of the young.",
+        dedication="Samwise Gamgee",
+    ),
 )
 
 
