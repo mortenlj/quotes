@@ -115,16 +115,19 @@ echo "==> Running endpoint tests ..."
 # 1. GET / — expect 303
 run_test "GET / returns 303" "303" "${BASE_URL}/"
 
-# 2. GET /_/healthy — expect 200
+# 2. GET / — expect 200
+run_test "GET /1 returns 200" "200" "${BASE_URL}/1"
+
+# 3. GET /_/healthy — expect 200
 run_test "GET /_/healthy returns 200" "200" "${BASE_URL}/_/healthy"
 
-# 3. GET /_/ready — expect 200
+# 4. GET /_/ready — expect 200
 run_test "GET /_/ready returns 200" "200" "${BASE_URL}/_/ready"
 
-# 4. GET /api/v1/quotes/ — expect 303
+# 5. GET /api/v1/quotes/ — expect 303
 run_test "GET /api/v1/quotes/ returns 303" "303" "${BASE_URL}/api/v1/quotes/"
 
-# 5. GET /api/v1/quotes/1 — expect 200 with JSON body containing "id":1 and "quote" key
+# 6. GET /api/v1/quotes/1 — expect 200 with JSON body containing "id":1 and "quote" key
 run_test "GET /api/v1/quotes/1 returns 200 with JSON" "200" "${BASE_URL}/api/v1/quotes/1" \
     '"id"\s*:\s*1' \
     '"quote"\s*:'
