@@ -3,7 +3,7 @@ authors = [
     { name = "Morten Lied Johansen", email = "mortenjo@ifi.uio.no" },
 ]
 license = { text = "MIT" }
-requires-python = "~=3.13.0"
+requires-python = "==3.13.*"
 dependencies = [
     "fastapi<1.0.0,>=0.115.2",
     "uvicorn<1.0.0,>=0.34.0",
@@ -12,16 +12,25 @@ dependencies = [
     "fiaas-logging<1.0.0,>=0.1.1",
     "jinja2>=3.1.6",
 ]
-name = "quotes-backend"
-version = "0.1.0"
-description = ""
-
-[tool.black]
-line-length = 120
-target-version = ["py313"]
-
-[dependency-groups]
-dev = [
-    "black==26.3.1",
-    "prospector==1.18.0",
+name = "quotes"
+description = "Quotes API and site"
+readme = "README.rst"
+dynamic = [
+    "version",
 ]
+
+[build-system]
+requires = ["hatchling==1.28.0", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.sdist]
+include = ["ibidem"]
+
+[tool.hatch.build.targets.wheel]
+include = ["ibidem"]
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+[tool.ruff]
+line-length = 120

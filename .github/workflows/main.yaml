@@ -1,140 +1,44 @@
-name: Build
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+name: quotes
 
 on:
   push:
   workflow_dispatch:
 
-env:
-  main_image: ghcr.io/${{ github.repository }}
-  cache_image: ghcr.io/${{ github.repository }}/cache:cache
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   setup:
-    name: Set variables
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
-      - name: "Set image version"
-        id: constants
-        run: |
-          export version="$(date +%Y%m%d%H%M%S)-$(git describe --always --dirty --exclude '*')"
-          echo "VERSION=${version}" >> ${GITHUB_OUTPUT}
-    outputs:
-      VERSION: "${{ steps.constants.outputs.VERSION }}"
+    uses: mortenlj/mise-lib/.github/workflows/setup.yaml@main
+
   build:
-    name: Build
-    runs-on: ubuntu-latest
-    needs: setup
     permissions:
-      contents: read
-      id-token: write
       packages: write
       checks: write
       pull-requests: write
-    env:
-      VERSION: "${{ needs.setup.outputs.VERSION }}"
-    steps:
-      - name: Set up QEMU
-        id: qemu
-        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
-        with:
-          image: tonistiigi/binfmt:latest
-          platforms: all
-      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
-      - name: Login to GitHub Packages Docker Registry
-        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Install earthly
-        uses: earthly/actions-setup@43211c7a0eae5344d6d79fb4aaf209c8f8866203 # v1.0.13
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          use-cache: true
-      - name: Build and possibly push
-        env:
-          EARTHLY_PUSH: "${{ github.ref == 'refs/heads/main' }}"
-          EARTHLY_USE_INLINE_CACHE: true
-          EARTHLY_SAVE_INLINE_CACHE: true
-          EARTHLY_VERBOSE: true
-          EARTHLY_FULL_TARGET: true
-          EARTHLY_OUTPUT: true
-          EARTHLY_ORG: ${{ vars.EARTHLY_ORG }}
-          EARTHLY_SATELLITE: ${{ vars.EARTHLY_SATELLITE }}
-          EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
-          DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
-          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-        run: |
-          earthly --version
-          earthly "--remote-cache=${cache_image}" +deploy "--main_image=${main_image}" "--VERSION=${VERSION}"
-      - name: Save manifests for later deploy
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
-        with:
-          name: manifests
-          path: deploy.yaml
+    needs: setup
+    uses: mortenlj/mise-lib/.github/workflows/build-docker.yaml@main
+    with:
+      main-image: ghcr.io/${{ github.repository }}
+      clean-version: ${{ fromJSON(needs.setup.outputs.clean-version) }}
+      tool-versions: ${{ needs.setup.outputs.tool-versions }}
+    secrets:
+      GHCR_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
   deploy:
-    name: Deploy
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
     permissions:
       id-token: write # This is required for requesting the JWT
     needs:
       - setup
       - build
-    steps:
-      - name: Get kubeconfig
-        uses: mortenlj/kube-actions/get-kubeconfig@main
-      - name: Download manifests from build
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
-        with:
-          name: manifests
-      - id: join-zt
-        name: Join ZeroTier network
-        uses: mortenlj/zerotier-actions/join-zt@main
-        with:
-          network_id: ${{ secrets.ZEROTIER_NETWORK_ID }}
-          api_accesstoken: ${{ secrets.ZEROTIER_API_ACCESSTOKEN }}
-          ping_target: k3s.home.ibidem.no
-      - name: Run kubectl apply
-        uses: mortenlj/kube-actions/apply-manifest@main
-      - name: Leave ZeroTier network
-        if: always()
-        uses: mortenlj/zerotier-actions/leave-zt@main
-        with:
-          node_id: ${{ steps.join-zt.outputs.node_id }}
-          network_id: ${{ secrets.ZEROTIER_NETWORK_ID }}
-          api_accesstoken: ${{ secrets.ZEROTIER_API_ACCESSTOKEN }}
+    uses: mortenlj/mise-lib/.github/workflows/deploy.yaml@main
+    secrets:
+      ZEROTIER_NETWORK_ID: ${{ secrets.ZEROTIER_NETWORK_ID }}
+      ZEROTIER_API_ACCESSTOKEN: ${{ secrets.ZEROTIER_API_ACCESSTOKEN }}
+
   cleanup:
-    name: Cleanup
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    needs: build
     permissions:
       packages: write
-    steps:
-      - name: Cleanup main images
-        uses: dataaxiom/ghcr-cleanup-action@cd0cdb900b5dbf3a6f2cc869f0dbb0b8211f50c4 # v1.0.16
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          keep-n-tagged: 5
-          older-than: 2 weeks
-          delete-untagged: true
-          delete-ghost-images: true
-          delete-orphaned-images: true
-          delete-partial-images: true
-      - name: Cleanup old cache images
-        uses: dataaxiom/ghcr-cleanup-action@cd0cdb900b5dbf3a6f2cc869f0dbb0b8211f50c4 # v1.0.16
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          package: quotes/cache
-          exclude-tags: cache
-          keep-n-tagged: 1
-          delete-untagged: true
-          delete-ghost-images: true
-          delete-orphaned-images: true
-          delete-partial-images: false
+    needs: build
+    uses: mortenlj/mise-lib/.github/workflows/cleanup.yaml@main

@@ -1,0 +1,58 @@
+[task_config]
+includes = [".config/mise-lib/virtual_tasks.toml", ".config/mise-lib"]
+
+[settings]
+env_shell_expand = true
+
+[tools]
+python = """
+{%- set command = 'grep requires-python ' ~ config_root ~ "/pyproject.toml | grep --only-matching --extended-regexp '3.[0-9]+'" -%}
+
+{{- exec(cache_key="python", command=command) -}}
+"""
+uv = "latest"
+
+[tasks.local]
+run = "uv run python -m ibidem.quotes"
+
+[tasks.test]
+# TODO: Add tests
+#depends = ["python:test"]
+description = "Run tests"
+
+[tasks.fmt]
+depends = ["python:fmt"]
+description = "Format source"
+
+[tasks.fmt-check]
+depends = ["python:fmt-check"]
+description = "Check formatting"
+
+[tasks.lint]
+depends = ["python:lint"]
+description = "Lint the project"
+
+[tasks.lint-fix]
+depends = ["python:lint-fix"]
+description = "Run lint fixers"
+
+[tasks.ci]
+depends = ["test", "fmt-check", "lint"]
+description = "Run CI tasks"
+
+[tasks.build]
+depends = ["python:build"]
+description = "Build the project in debug mode"
+sources = ["quotes/**/*.py", "ibidem/**/*.py", "src/**/*.py", "uv.lock", "pyproject.toml"]
+outputs = ["dist/quotes-*.tar.gz", "dist/quotes-*.whl"]
+
+[tasks.release-build]
+depends = ["python:release-build"]
+description = "Build the project"
+sources = ["quotes/**/*.py", "ibidem/**/*.py", "src/**/*.py", "uv.lock", "pyproject.toml"]
+outputs = ["dist/quotes-*.tar.gz", "dist/quotes-*.whl"]
+
+[tasks.docker-build]
+description = "Build the docker image"
+sources = ["quotes/**/*.py", "ibidem/**/*.py", "src/**/*.py", "uv.lock", "pyproject.toml", "Dockerfile"]
+run = "docker buildx build --tag ttl.sh/mortenlj-quotes:1h --build-arg PY_VERSION=$(mise ls --local --json | jq -r '.python[].requested_version') ."
