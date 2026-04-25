@@ -2,11 +2,9 @@
 set -euo pipefail
 
 # Integration test script for the quotes service.
-# Builds the Docker image via earthly, runs it, tests all 5 endpoints, then cleans up.
+# Builds the Docker image, runs it, tests all 5 endpoints, then cleans up.
 
-IMAGE_BASE="ghcr.io/mortenlj/quotes"
-GIT_HASH="$(git rev-parse --short=8 HEAD)"
-IMAGE="${IMAGE_BASE}:${GIT_HASH}"
+IMAGE="ttl.sh/mortenlj-quotes:1h"
 HOST_PORT=13000
 BASE_URL="http://localhost:${HOST_PORT}"
 CONTAINER_NAME="quotes-integration-test-$$"
@@ -28,8 +26,8 @@ trap cleanup EXIT
 # ---------------------------------------------------------------------------
 # Build
 # ---------------------------------------------------------------------------
-echo "==> Building image with earthly +deploy ..."
-earthly +deploy
+echo "==> Building image ..."
+mise run docker-build
 
 # ---------------------------------------------------------------------------
 # Run
