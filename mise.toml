@@ -8,7 +8,7 @@ env_shell_expand = true
 python = """
 {%- set command = 'grep requires-python ' ~ config_root ~ "/pyproject.toml | grep --only-matching --extended-regexp '3.[0-9]+'" -%}
 
-{{- exec(cache_key="python", command=command) -}}
+{{- exec(cache_key="python", cache_duration="5m", command=command) -}}
 """
 uv = "latest"
 
