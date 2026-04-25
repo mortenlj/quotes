@@ -1,4 +1,5 @@
 from fastapi.templating import Jinja2Templates
+import jinja2
 
 from ibidem.quotes.api.schemas import Quote
 
@@ -939,4 +940,6 @@ def get_db():
 
 
 def templates():
-    return Jinja2Templates(directory="templates")
+    loader = jinja2.PackageLoader("ibidem.quotes")
+    env = jinja2.Environment(loader=loader, autoescape=True)
+    return Jinja2Templates(env=env)
