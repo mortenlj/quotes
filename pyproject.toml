@@ -20,7 +20,7 @@ dynamic = [
 ]
 
 [build-system]
-requires = ["hatchling==1.28.0", "uv-dynamic-versioning"]
+requires = ["hatchling==1.29.0", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.sdist]
