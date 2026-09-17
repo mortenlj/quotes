@@ -1,5 +1,3 @@
-from typing import Optional
-
 from pydantic import ConfigDict
 from pydantic.main import BaseModel
 
@@ -9,7 +7,7 @@ class Quote(BaseModel):
 
     id: int
     quote: str
-    dedication: Optional[str] = None
+    dedication: str | None = None
 
     def encode(self, charset):
         parts = [self.quote]

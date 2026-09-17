@@ -1,5 +1,5 @@
-from fastapi.templating import Jinja2Templates
 import jinja2
+from fastapi.templating import Jinja2Templates
 
 from ibidem.quotes.api.schemas import Quote
 

@@ -14,7 +14,6 @@ dependencies = [
 ]
 name = "quotes"
 description = "Quotes API and site"
-readme = "README.rst"
 dynamic = [
     "version",
 ]

@@ -1,7 +1,8 @@
 import random
+from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Request
-from fastapi.responses import RedirectResponse, HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from starlette import status
 
@@ -11,7 +12,7 @@ router = APIRouter()
 
 
 @router.get("/", status_code=status.HTTP_303_SEE_OTHER)
-def get_random_quote(db: dict = Depends(get_db)):
+def get_random_quote(db: Annotated[dict, Depends(get_db)]):
     """Get random quote"""
     quote_id = random.choice(list(db.keys()))
     url = router.url_path_for("get_quote", id=quote_id)
@@ -22,8 +23,8 @@ def get_random_quote(db: dict = Depends(get_db)):
 def get_quote(
     request: Request,
     id: int,
-    db: dict = Depends(get_db),
-    templates: Jinja2Templates = Depends(templates),
+    db: Annotated[dict, Depends(get_db)],
+    templates: Annotated[Jinja2Templates, Depends(templates)],
 ):
     quote = db.get(id)
     if quote is None:

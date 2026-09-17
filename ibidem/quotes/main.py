@@ -43,7 +43,7 @@ def main():
         )
     except ExitOnSignal:
         pass
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         print(f"unwanted exception: {e}")
         exit_code = 113
     return exit_code
